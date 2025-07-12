@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Student Union - Cybercrime Awareness</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #1c92d2, #f2fcfe);
+    color: #333;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  header {
+    text-align: center;
+    background-color: #004d99;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 2rem;
+  }
+  section {
+    background: white;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+  }
+  label, h2 {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  input, button, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  button {
+    background-color: #004d99;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  button:hover {
+    background-color: #003366;
+  }
+  .output {
+    font-weight: bold;
+    color: #004d99;
+    background: #e6f0ff;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #555;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Student Union - Cybercrime Awareness</h1>
+  </header>  <section>
+    <h2>Generate a Secure Password</h2>
+    <label for="first">First Name</label>
+    <input type="text" id="first">
+    <label for="last">Last Name</label>
+    <input type="text" id="last">
+    <label for="custom">Your Favorite Word/Number</label>
+    <input type="text" id="custom">
+    <button onclick="generatePassword()">Generate Password</button>
+    <div class="output" id="password"></div>
+    <button onclick="copyPassword()">Copy to Clipboard</button>
+  </section>  <section>
+    <h2>Cyber Safety Tips</h2>
+    <ul>
+      <li>Use strong, unique passwords for each account.</li>
+      <li>Don't share OTPs or personal info online.</li>
+      <li>Use two-factor authentication wherever possible.</li>
+    </ul>
+  </section>  <section>
+    <h2>Report Cybercrime</h2>
+    <p>If you encounter any suspicious online activity, please report it immediately.</p>
+    <a href="https://cid.nepalpolice.gov.np" target="_blank">
+      <button>Report to Nepal Police Cyber Bureau</button>
+    </a>
+  </section>  <section>
+    <h2>Join the Student Union</h2>
+    <p>Interested in joining our movement? Submit your details below and our team will contact you.</p>
+    <form action="submit.php" method="POST">
+      <label for="joinName">Full Name</label>
+      <input type="text" name="name" id="joinName" required>
+      <label for="joinEmail">Email Address</label>
+      <input type="email" name="email" id="joinEmail" required>
+      <label for="joinReason">Why do you want to join?</label>
+      <textarea name="reason" id="joinReason" required></textarea>
+      <button type="submit">Submit Request</button>
+    </form>
+  </section>  <footer>
+    <p>Made with ❤️ by Coder. Prajwal Subedi</p>
+  </footer><script>
+function generatePassword() {
+  const first = document.getElementById('first').value;
+  const last = document.getElementById('last').value;
+  const custom = document.getElementById('custom').value;
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%!&*';
+  let randomPart = '';
+  for (let i = 0; i < 8; i++) {
+    randomPart += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  const password = first.slice(0,2) + last.slice(-2) + custom + randomPart;
+  document.getElementById('password').textContent = password;
+}
+
+function copyPassword() {
+  const text = document.getElementById('password').textContent;
+  navigator.clipboard.writeText(text).then(() => alert('Password copied!'));
+}
+</script></body>
+</html>
